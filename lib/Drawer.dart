@@ -36,14 +36,16 @@ class _DrawersState extends State<Drawers> {
     return Container(
       child: Drawer(
         child: ListView(children: [
-          UserAccountsDrawerHeader(
-            currentAccountPicture:
-                Image.network(dataResponse!['avatar'].toString()),
-            accountName: Text(dataResponse!['first_name'].toString() +
-                ' ' +
-                dataResponse!['last_name'].toString()),
-            accountEmail: Text(dataResponse!['email'].toString()),
-          ),
+          dataResponse != null
+              ? UserAccountsDrawerHeader(
+                  currentAccountPicture:
+                      Image.network(dataResponse!['avatar'].toString()),
+                  accountName: Text(dataResponse!['first_name'].toString() +
+                      ' ' +
+                      dataResponse!['last_name'].toString()),
+                  accountEmail: Text(dataResponse!['email'].toString()),
+                )
+              : Text('data'),
           ListTile(title: Text('data is lodding')),
         ]),
       ),
